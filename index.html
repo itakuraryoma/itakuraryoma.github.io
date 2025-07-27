@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>板倉 亮真 | 個人ページ</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body class="bg-gray-100 text-gray-800 font-sans">
 
   <div class="flex flex-col md:flex-row max-w-7xl mx-auto">
@@ -13,14 +15,22 @@
     <aside class="hidden md:block w-64 bg-white shadow h-screen sticky top-0 p-6">
       <h2 class="text-xl font-bold mb-6">目次 / Menu</h2>
       <nav class="space-y-4 text-gray-700 text-sm">
-        <a href="#biography" class="hover:underline block">経歴 / Biography</a>
-        <a href="#research" class="hover:underline block">研究テーマ / Research</a>
-        <a href="#publications" class="hover:underline block">論文 / Publications</a>
-        <a href="#contact" class="hover:underline block">連絡先 / Contact</a>
+        <a href="#biography" class="hover:underline block flex items-center gap-2">
+          <i data-lucide="file-text" class="w-4 h-4"></i> 経歴 / Biography
+        </a>
+        <a href="#research" class="hover:underline block flex items-center gap-2">
+          <i data-lucide="brain" class="w-4 h-4"></i> 研究テーマ / Research
+        </a>
+        <a href="#publications" class="hover:underline block flex items-center gap-2">
+          <i data-lucide="book-open" class="w-4 h-4"></i> 論文 / Publications
+        </a>
+        <a href="#contact" class="hover:underline block flex items-center gap-2">
+          <i data-lucide="mail" class="w-4 h-4"></i> 連絡先 / Contact
+        </a>
       </nav>
     </aside>
 
-    <!-- メインコンテンツ -->
+    <!-- メイン -->
     <main class="flex-1 p-6 md:p-10">
       <header class="bg-white shadow p-6 mb-8 rounded-xl">
         <div class="max-w-4xl mx-auto">
@@ -31,50 +41,66 @@
 
       <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 space-y-10">
 
+        <!-- 経歴 -->
         <section id="biography">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">経歴 / Biography</h2>
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
+            <i data-lucide="file-text" class="w-6 h-6 text-blue-500"></i>
+            経歴 / Biography
+          </h2>
           <div class="space-y-4 text-base leading-relaxed">
             <div>
               <h3 class="font-semibold">北海道大学 / Hokkaido University</h3>
               <ul class="list-disc pl-6 text-gray-700">
-                <li>2024.10– 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
-                <li>2023.4– 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
-                <li>2022.4– 総合入試理系</li>
+                <li>2024.10- 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
+                <li>2023.4- 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
+                <li>2022.4- 総合入試理系</li>
               </ul>
             </div>
             <div>
               <h3 class="font-semibold">神奈川県立湘南高等学校 / Shonan High School</h3>
-              <p class="text-gray-700">2018.4–2021.3</p>
+              <p class="text-gray-700">2018.4-2021.3</p>
             </div>
           </div>
         </section>
 
+        <!-- 研究 -->
         <section id="research">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">研究テーマ / Research Interests</h2>
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
+            <i data-lucide="brain" class="w-6 h-6 text-purple-500"></i>
+            研究テーマ / Research Interests
+          </h2>
           <ul class="list-disc pl-6 text-gray-700 leading-relaxed">
             <li>農業生成AI / Agricultural Generative AI</li>
             <li>人工市場シミュレーション / Artificial Market Simulation</li>
           </ul>
         </section>
 
+        <!-- 論文 -->
         <section id="publications">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">論文 / Publications</h2>
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
+            <i data-lucide="book-open" class="w-6 h-6 text-green-600"></i>
+            論文 / Publications
+          </h2>
           <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
-            <li>
-              <strong>板倉亮真</strong>, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
-              <strong>"生成AIのための農業データセット構築とモデル評価"</strong>,<br>
-              言語処理学会第31回年次大会 (NLP2025), 2025.
-            </li>
             <li>
               <strong>板倉亮真</strong>, 鈴木雅弘, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
               <strong>"地方農業に特化したQAデータセットの構築と検証"</strong>,<br>
               2025年度人工知能学会全国大会, 2025.
             </li>
+            <li>
+              <strong>板倉亮真</strong>, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
+              <strong>"生成AIのための農業データセット構築とモデル評価"</strong>,<br>
+              言語処理学会第31回年次大会 (NLP2025), 2025.
+            </li>
           </ol>
         </section>
 
-        <section id="contact">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">連絡先 / Contact</h2>
+        <!-- 連絡先 -->
+        <section id="contact" class="animate-fadeIn">
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
+            <i data-lucide="mail" class="w-6 h-6 text-red-500"></i>
+            連絡先 / Contact
+          </h2>
           <ul class="space-y-2 text-gray-700">
             <li><strong>Email:</strong> itakura.ryoma[at]gmail.com</li>
             <li><strong>GitHub:</strong> <a href="https://github.com/itakuraryoma" class="text-blue-600 hover:underline">itakuraryoma</a></li>
@@ -88,5 +114,9 @@
       </footer>
     </main>
   </div>
+
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
