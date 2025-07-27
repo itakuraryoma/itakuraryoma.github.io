@@ -1,43 +1,92 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>板倉 亮真 | 個人ページ</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans">
 
-  <header class="bg-white shadow p-6">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-bold">板倉 亮真</h1>
-      <p class="text-lg text-gray-600">北海道大学工学部</p>
-      <p class="text-gray-500">湘南高等学校卒業</p>
-    </div>
-  </header>
+  <div class="flex flex-col md:flex-row max-w-7xl mx-auto">
+    <!-- サイドバー -->
+    <aside class="hidden md:block w-64 bg-white shadow h-screen sticky top-0 p-6">
+      <h2 class="text-xl font-bold mb-6">目次 / Menu</h2>
+      <nav class="space-y-4 text-gray-700 text-sm">
+        <a href="#biography" class="hover:underline block">経歴 / Biography</a>
+        <a href="#research" class="hover:underline block">研究テーマ / Research</a>
+        <a href="#publications" class="hover:underline block">論文 / Publications</a>
+        <a href="#contact" class="hover:underline block">連絡先 / Contact</a>
+      </nav>
+    </aside>
 
-  <main class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-2xl shadow">
-    <section class="mb-8">
-      <h2 class="text-2xl font-semibold mb-4 border-b pb-2">プロフィール</h2>
-      <p class="leading-relaxed">
-        北海道大学工学部に在学中の板倉亮真です。高校は湘南高等学校を卒業しました。現在は◯◯分野に興味があり、研究・学習に取り組んでいます。
-      </p>
-    </section>
+    <!-- メインコンテンツ -->
+    <main class="flex-1 p-6 md:p-10">
+      <header class="bg-white shadow p-6 mb-8 rounded-xl">
+        <div class="max-w-4xl mx-auto">
+          <h1 class="text-3xl font-bold">板倉 亮真 / Ryoma ITAKURA</h1>
+          <p class="text-lg text-gray-600">北海道大学 / Hokkaido University, Japan</p>
+        </div>
+      </header>
 
-    <section>
-      <h2 class="text-2xl font-semibold mb-4 border-b pb-2">連絡先・SNS</h2>
-      <ul class="space-y-2">
-        <li><strong>Email:</strong> your.email@example.com</li>
-        <li><strong>GitHub:</strong> <a href="https://github.com/yourusername" class="text-blue-600 hover:underline">yourusername</a></li>
-        <li><strong>X（旧Twitter）:</strong> <a href="https://twitter.com/yourhandle" class="text-blue-600 hover:underline">@yourhandle</a></li>
-      </ul>
-    </section>
-  </main>
+      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 space-y-10">
 
-  <footer class="mt-10 text-center text-sm text-gray-500 p-4">
-    &copy; 2025 板倉 亮真. All rights reserved.
-  </footer>
+        <section id="biography">
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">経歴 / Biography</h2>
+          <div class="space-y-4 text-base leading-relaxed">
+            <div>
+              <h3 class="font-semibold">北海道大学 / Hokkaido University</h3>
+              <ul class="list-disc pl-6 text-gray-700">
+                <li>2024.10– 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
+                <li>2023.4– 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
+                <li>2022.4– 総合入試理系</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-semibold">神奈川県立湘南高等学校 / Shonan High School</h3>
+              <p class="text-gray-700">2018.4–2021.3</p>
+            </div>
+          </div>
+        </section>
 
+        <section id="research">
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">研究テーマ / Research Interests</h2>
+          <ul class="list-disc pl-6 text-gray-700 leading-relaxed">
+            <li>農業生成AI / Agricultural Generative AI</li>
+            <li>人工市場シミュレーション / Artificial Market Simulation</li>
+          </ul>
+        </section>
+
+        <section id="publications">
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">論文 / Publications</h2>
+          <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
+            <li>
+              <strong>板倉亮真</strong>, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
+              <strong>"生成AIのための農業データセット構築とモデル評価"</strong>,<br>
+              言語処理学会第31回年次大会 (NLP2025), 2025.
+            </li>
+            <li>
+              <strong>板倉亮真</strong>, 鈴木雅弘, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
+              <strong>"地方農業に特化したQAデータセットの構築と検証"</strong>,<br>
+              2025年度人工知能学会全国大会, 2025.
+            </li>
+          </ol>
+        </section>
+
+        <section id="contact">
+          <h2 class="text-2xl font-semibold mb-4 border-b pb-2">連絡先 / Contact</h2>
+          <ul class="space-y-2 text-gray-700">
+            <li><strong>Email:</strong> itakura.ryoma[at]gmail.com</li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/itakuraryoma" class="text-blue-600 hover:underline">itakuraryoma</a></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <footer class="mt-10 text-center text-sm text-gray-500 p-4">
+        &copy; 2025 板倉 亮真. All rights reserved.
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
-
