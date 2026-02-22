@@ -91,6 +91,11 @@
           </h2>
           <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
             <li>
+              <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN), 坂地 泰紀 (北大), 野田 五十樹 (北大),<br>
+              <strong>"LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション"</strong>,<br>
+              第20回言語処理若手シンポジウム (YANS2025), 2025.
+            </li>
+            <li>
               <strong>板倉亮真</strong>, 鈴木雅弘, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
               <strong>"地方農業に特化したQAデータセットの構築と検証"</strong>,<br>
               2025年度人工知能学会全国大会, 2025.
@@ -109,8 +114,11 @@
             <i data-lucide="trophy" class="w-6 h-6 text-yellow-500"></i>
             コンペ成績 / Competition Results
           </h2>
-          </h2>
           <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
+            <li>
+              #21 atmaCup in collaboration with Elith<br>
+              学生<strong>2位</strong> / 全体<strong>11位</strong> (386チーム中)・賞金6万円獲得
+            </li>
             <li>
               SIGNATE 「Axell AI Contest 2025 飲料パッケージの物体検出」<br>
               <strong>39位</strong>/123人 <strong>銅メダル</strong><br>
@@ -149,100 +157,10 @@
       </footer>
     </main>
   </div>
-
-  <!-- confettiライブラリ -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script>
-  // 徐々に振幅を増やすシェイク
-    function progressiveShake(opts = { duration: 800, max: 20, rotate: 3 }) {
-    const { duration, max, rotate } = opts;
-    const start = performance.now();
-
-    function easeOutExpo(t) {
-        return t === 1 ? 0 : 1 - Math.pow(2, -10 * t); 
-        // 0で最大, 1で0になるイージング
-    }
-
-    function frame(now) {
-        const elapsed = now - start;
-        const t = Math.min(elapsed / duration, 1);
-        const amp = (1 - t) * max * easeOutExpo(t); // 初期強く→収束
-        const x = (Math.random() * 2 - 1) * amp;
-        const y = (Math.random() * 2 - 1) * amp;
-        const r = (Math.random() * 2 - 1) * (amp / max) * rotate;
-
-        document.body.style.transform = `translate(${x}px, ${y}px) rotate(${r}deg)`;
-
-        if (t < 1) {
-        requestAnimationFrame(frame);
-        } else {
-        document.body.style.transform = '';
-        }
-    }
-    requestAnimationFrame(frame);
-    }
-
-  // 大爆発エフェクト
-  function megaExplosion(target) {
-    const vw = window.innerWidth, vh = window.innerHeight;
-    const rect = target.getBoundingClientRect();
-    const cx = (rect.left + rect.width / 2) / vw;
-    const cy = (rect.top + rect.height / 2) / vh;
-    const big = confetti.create(null, { resize: true, useWorker: true });
-    const defaults = { origin: { x: cx, y: cy } };
-
-    // 中心からバースト
-    big({ ...defaults, particleCount: 200, spread: 120, startVelocity: 70 });
-    big({ ...defaults, particleCount: 150, angle: 60, spread: 80, startVelocity: 60 });
-    big({ ...defaults, particleCount: 150, angle: 120, spread: 80, startVelocity: 60 });
-
-    // ランダム花火ウェーブ
-    const end = Date.now() + 1000;
-    (function wave() {
-      big({
-        particleCount: 12,
-        spread: 360,
-        ticks: 100,
-        startVelocity: 50,
-        origin: { x: Math.random(), y: Math.random() * 0.6 }
-      });
-      if (Date.now() < end) requestAnimationFrame(wave);
-    })();
-
-    // 揺れ
-    progressiveShake({ duration: 1000, max: 20, rotate: 3 });
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-
-    const btn = document.getElementById("metAtYans");
-    const msg = document.getElementById("yansMessage");
-
-    const fullText = msg.textContent.trim();
-    const stageTexts = [
-      fullText,
-      fullText.slice(0, Math.floor(fullText.length * 0.66)) + "…",
-      fullText.slice(0, Math.floor(fullText.length * 0.33)) + "…",
-      ""
-    ];
-    let stage = 0;
-
-    btn.addEventListener("click", () => {
-      // 本文を段階的に消す
-      stage = Math.min(stage + 1, 3);
-      msg.textContent = stageTexts[stage];
-
-      // 毎回爆発＆激しい揺れ
-      megaExplosion(btn);
-
-      // 3回目で終了
-      if (stage === 3) {
-        btn.disabled = true;
-        btn.textContent = "🎆 消えちゃいました！";
-      }
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
     });
-  });
-</script>
+  </script>
 </body>
 </html>
