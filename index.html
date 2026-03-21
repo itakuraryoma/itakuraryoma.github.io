@@ -4,163 +4,1145 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="tSIF1rNK2dGaydtIs8t3qBkJ3F3MsD-UL9cxhVQf8JQ" />
-  <title>板倉 亮真 | 個人ページ</title>
+  <title>板倉 亮真 | Ryoma ITAKURA</title>
   <link rel="icon" type="image/png" href="logo_itakura.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* パフォーマンス最適化 */
-    body { will-change: transform; }
+    :root {
+      --bg-primary: #080c14;
+      --bg-secondary: #0d1421;
+      --bg-card: rgba(255, 255, 255, 0.04);
+      --bg-card-hover: rgba(255, 255, 255, 0.07);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(0, 212, 255, 0.3);
+      --text-primary: #f0f4f8;
+      --text-secondary: #8892a4;
+      --text-muted: #556172;
+      --accent-cyan: #00d4ff;
+      --accent-blue: #3b82f6;
+      --accent-purple: #a855f7;
+      --accent-green: #10d9a0;
+      --gradient-main: linear-gradient(135deg, #00d4ff, #3b82f6, #a855f7);
+      --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(168,85,247,0.1));
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Inter', 'Noto Sans JP', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: #2a3447; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3d4f6b; }
+
+    /* Layout */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 32px 20px;
+      gap: 8px;
+      overflow-y: auto;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gradient-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .sidebar-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .sidebar-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 8px;
+      margin: 12px 0 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .nav-item:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--border);
+    }
+
+    .nav-item.active {
+      background: rgba(0, 212, 255, 0.08);
+      color: var(--accent-cyan);
+      border-color: rgba(0, 212, 255, 0.2);
+    }
+
+    .nav-item svg {
+      width: 15px;
+      height: 15px;
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      min-width: 0;
+      padding: 0 0 80px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 64px 48px 48px;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 200px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(168,85,247,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: var(--accent-cyan);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .hero-name {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-name-en {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-affil {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .hero-affil img {
+      height: 20px;
+      opacity: 0.8;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid;
+    }
+
+    .tag-cyan {
+      background: rgba(0, 212, 255, 0.08);
+      border-color: rgba(0, 212, 255, 0.25);
+      color: var(--accent-cyan);
+    }
+
+    .tag-purple {
+      background: rgba(168, 85, 247, 0.08);
+      border-color: rgba(168, 85, 247, 0.25);
+      color: var(--accent-purple);
+    }
+
+    .tag-green {
+      background: rgba(16, 217, 160, 0.08);
+      border-color: rgba(16, 217, 160, 0.25);
+      color: var(--accent-green);
+    }
+
+    .tag-blue {
+      background: rgba(59, 130, 246, 0.08);
+      border-color: rgba(59, 130, 246, 0.25);
+      color: var(--accent-blue);
+    }
+
+    /* Sections */
+    .content-wrap {
+      padding: 0 48px;
+    }
+
+    section {
+      padding-top: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .section-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .icon-blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
+    .icon-purple { background: rgba(168,85,247,0.15); color: #a855f7; }
+    .icon-green { background: rgba(16,217,160,0.15); color: #10d9a0; }
+    .icon-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    .icon-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .icon-cyan { background: rgba(0,212,255,0.15); color: #00d4ff; }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .section-title-en {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-top: 1px;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), transparent);
+      opacity: 0.4;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 28px 28px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+    }
+
+    .timeline-item.org::before {
+      background: var(--accent-purple);
+      box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+    }
+
+    .timeline-period {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .timeline-org img {
+      height: 18px;
+      opacity: 0.9;
+    }
+
+    .timeline-detail {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .timeline-detail li {
+      list-style: none;
+      padding: 2px 0;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .timeline-detail li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: all 0.25s ease;
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-1px);
+    }
+
+    /* Publication cards */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .pub-card.nlp::before { background: var(--accent-cyan); }
+    .pub-card.sigfin::before { background: var(--accent-purple); }
+    .pub-card.yans::before { background: var(--accent-green); }
+    .pub-card.jsai::before { background: var(--accent-blue); }
+
+    .pub-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .pub-venue {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .venue-nlp { background: rgba(0,212,255,0.12); color: var(--accent-cyan); }
+    .venue-sigfin { background: rgba(168,85,247,0.12); color: var(--accent-purple); }
+    .venue-yans { background: rgba(16,217,160,0.12); color: var(--accent-green); }
+    .venue-jsai { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
+
+    .pub-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .pub-authors {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .pub-authors strong {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .pub-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* Competition cards */
+    .comp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comp-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 22px;
+      transition: all 0.25s ease;
+    }
+
+    .comp-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .comp-rank {
+      min-width: 52px;
+      text-align: center;
+    }
+
+    .comp-rank-num {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .comp-rank-label {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .rank-gold { color: #f59e0b; }
+    .rank-silver { color: #94a3b8; }
+    .rank-bronze { color: #cd7c2f; }
+
+    .comp-info-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .comp-info-detail {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .comp-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .badge-gold { background: rgba(245,158,11,0.15); color: #f59e0b; }
+    .badge-bronze { background: rgba(205,124,47,0.15); color: #cd7c2f; }
+
+    /* Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .contact-item:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+      color: var(--text-primary);
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .contact-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .contact-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    /* Fade in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .hero { padding: 40px 24px 32px; }
+      .hero-name { font-size: 30px; }
+      .content-wrap { padding: 0 24px; }
+      .comp-card { flex-direction: column; gap: 12px; }
+      footer { padding: 24px; }
+    }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13, 20, 33, 0.95);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border);
+      padding: 8px 0;
+      z-index: 100;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-nav { display: flex; }
+      body { padding-bottom: 60px; }
+    }
+
+    .mobile-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 4px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 10px;
+    }
+
+    .mobile-nav-item svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .mobile-nav-item:hover { color: var(--accent-cyan); }
+
+    /* Number counter for publications */
+    .pub-number {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Grid for research */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      transition: all 0.2s ease;
+    }
+
+    .research-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .research-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .research-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .research-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
   </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800 font-sans">
-  <div class="flex flex-col md:flex-row max-w-7xl mx-auto">
-    <!-- サイドバー -->
-    <aside class="hidden md:block w-64 bg-white shadow h-screen sticky top-0 p-6">
-      <h2 class="text-xl font-bold mb-6">目次 / Menu</h2>
-      <nav class="space-y-4 text-gray-700 text-sm">
-        <a href="#biography" class="hover:underline block flex items-center gap-2">
-          <i data-lucide="file-text" class="w-4 h-4"></i> 経歴 / Biography
-        </a>
-        <a href="#research" class="hover:underline block flex items-center gap-2">
-          <i data-lucide="brain" class="w-4 h-4"></i> 研究テーマ / Research
-        </a>
-        <a href="#publications" class="hover:underline block flex items-center gap-2">
-          <i data-lucide="book-open" class="w-4 h-4"></i> 学会発表 / Presentations
-        </a>
-        <a href="#competitions" class="hover:underline block flex items-center gap-2">
-          <i data-lucide="trophy" class="w-4 h-4"></i> コンペ成績 / Competition Results
-        </a>
-          <a href="#contact" class="hover:underline block flex items-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4"></i> 連絡先 / Contact
-        </a>
-      </nav>
+<body>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="sidebar-avatar">RI</div>
+        <div>
+          <div class="sidebar-name">板倉 亮真</div>
+          <div class="sidebar-sub">Ryoma ITAKURA</div>
+        </div>
+      </div>
+
+      <span class="nav-label">Navigation</span>
+
+      <a href="#biography" class="nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        経歴 / Biography
+      </a>
+      <a href="#research" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        研究 / Research
+      </a>
+      <a href="#publications" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        学会発表 / Publications
+      </a>
+      <a href="#competitions" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg>
+        コンペ / Competitions
+      </a>
+      <a href="#contact" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        連絡先 / Contact
+      </a>
     </aside>
 
-    <!-- メイン -->
-    <main class="flex-1 p-6 md:p-10">
-      <header class="bg-white shadow p-6 mb-8 rounded-xl">
-        <div class="max-w-4xl mx-auto">
-          <h1 class="text-3xl font-bold">板倉 亮真 / Ryoma ITAKURA</h1>
-          <p class="text-lg text-gray-600">北海道大学 / Hokkaido University, Japan</p>
+    <!-- Main -->
+    <main class="main">
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-badge">北海道大学 大学院生</div>
+          <h1 class="hero-name">板倉 亮真</h1>
+          <p class="hero-name-en">Ryoma ITAKURA</p>
+          <div class="hero-affil">
+            <img src="logo_hokudai.png" alt="北大" onerror="this.style.display='none'">
+            <span>Hokkaido University · 知能ソフトウェア研究室</span>
+          </div>
+          <div class="hero-tags">
+            <span class="tag tag-cyan">Natural Language Processing</span>
+            <span class="tag tag-purple">Agricultural AI</span>
+            <span class="tag tag-green">Artificial Market Simulation</span>
+            <span class="tag tag-blue">LLM / Agent</span>
+          </div>
         </div>
-      </header>
+      </div>
 
-      <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6 space-y-10">
+      <!-- Content -->
+      <div class="content-wrap">
 
-        <!-- 経歴 -->
+        <!-- Biography -->
         <section id="biography">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
-            <i data-lucide="file-text" class="w-6 h-6 text-blue-500"></i>
-            経歴 / Biography
-          </h2>
-          <div class="space-y-4 text-base leading-relaxed">
-            <div>
-              <h3 class="font-semibold">北海道大学 / Hokkaido University</h3>
-              <ul class="list-disc pl-6 text-gray-700">
-                <li>2024.10- 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
-                <li>2023.4- 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
-                <li>2022.4- 総合入試理系</li>
-              </ul>
+          <div class="section-header fade-in">
+            <div class="section-icon icon-blue">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
             </div>
             <div>
-              <h3 class="font-semibold">神奈川県立湘南高等学校 / Shonan High School</h3>
-              <p class="text-gray-700">2018.4-2021.3</p>
+              <div class="section-title">経歴</div>
+              <div class="section-title-en">Biography</div>
+            </div>
+          </div>
+
+          <div class="timeline fade-in">
+            <!-- Elith -->
+            <div class="timeline-item org">
+              <div class="timeline-period">2026 –</div>
+              <div class="timeline-org">
+                <img src="logo_elith.avif" alt="Elith" onerror="this.style.display='none'">
+                株式会社 Elith
+              </div>
+              <ul class="timeline-detail">
+                <li>AI / ML エンジニア　インターン</li>
+              </ul>
+            </div>
+
+            <!-- Hokkaido Univ -->
+            <div class="timeline-item">
+              <div class="timeline-period">2022.4 –</div>
+              <div class="timeline-org">
+                <img src="logo_hokudai.png" alt="北大" onerror="this.style.display='none'">
+                北海道大学 / Hokkaido University
+              </div>
+              <ul class="timeline-detail">
+                <li>2024.10 –　知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
+                <li>2023.4 –　工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
+                <li>2022.4 –　総合入試理系</li>
+              </ul>
+            </div>
+
+            <!-- High school -->
+            <div class="timeline-item">
+              <div class="timeline-period">2018.4 – 2021.3</div>
+              <div class="timeline-org">神奈川県立湘南高等学校 / Shonan High School</div>
             </div>
           </div>
         </section>
 
-        <!-- 研究 -->
+        <div class="divider" style="margin-top: 8px;"></div>
+
+        <!-- Research -->
         <section id="research">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
-            <i data-lucide="brain" class="w-6 h-6 text-purple-500"></i>
-            研究テーマ / Research Interests
-          </h2>
-          <ul class="list-disc pl-6 text-gray-700 leading-relaxed">
-            <li>農業生成AI / Agricultural Generative AI</li>
-            <li>人工市場シミュレーション / Artificial Market Simulation</li>
-          </ul>
+          <div class="section-header fade-in">
+            <div class="section-icon icon-purple">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <div class="section-title">研究テーマ</div>
+              <div class="section-title-en">Research Interests</div>
+            </div>
+          </div>
+
+          <div class="research-grid fade-in">
+            <div class="research-card">
+              <div class="research-icon">🌾</div>
+              <div class="research-label">農業生成AI</div>
+              <div class="research-desc">Agricultural Generative AI · QA / RAG</div>
+            </div>
+            <div class="research-card">
+              <div class="research-icon">📈</div>
+              <div class="research-label">人工市場シミュレーション</div>
+              <div class="research-desc">Artificial Market Simulation · LLM Agent</div>
+            </div>
+            <div class="research-card">
+              <div class="research-icon">🤖</div>
+              <div class="research-label">大規模言語モデル</div>
+              <div class="research-desc">Large Language Models · Benchmarking</div>
+            </div>
+          </div>
         </section>
 
-        <!-- 論文 -->
+        <div class="divider" style="margin-top: 56px;"></div>
+
+        <!-- Publications -->
         <section id="publications">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
-            <i data-lucide="presentation" class="w-6 h-6 text-green-600"></i>
-            学会発表 / Presentations
-          </h2>
-          <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
-            <li>
-              <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN), 坂地 泰紀 (北大), 野田 五十樹 (北大),<br>
-              <strong>"LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション"</strong>,<br>
-              第20回言語処理若手シンポジウム (YANS2025), 2025.
-            </li>
-            <li>
-              <strong>板倉亮真</strong>, 鈴木雅弘, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
-              <strong>"地方農業に特化したQAデータセットの構築と検証"</strong>,<br>
-              2025年度人工知能学会全国大会, 2025.
-            </li>
-            <li>
-              <strong>板倉亮真</strong>, 坂地泰紀, 野田五十樹, 小林暁雄, 大友将宏, 石原潤一, 桂樹哲雄,<br>
-              <strong>"生成AIのための農業データセット構築とモデル評価"</strong>,<br>
-              言語処理学会第31回年次大会 (NLP2025), 2025.
-            </li>
-          </ol>
-        </section>
-        
-        <!-- コンペ成績 -->
-        <section id="competitions" class="mt-8">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
-            <i data-lucide="trophy" class="w-6 h-6 text-yellow-500"></i>
-            コンペ成績 / Competition Results
-          </h2>
-          <ol class="list-decimal pl-6 space-y-4 text-gray-700 text-sm leading-relaxed">
-            <li>
-              #21 atmaCup in collaboration with Elith<br>
-              学生<strong>2位</strong> / 全体<strong>11位</strong> (386チーム中)・賞金6万円獲得
-            </li>
-            <li>
-              SIGNATE 「Axell AI Contest 2025 飲料パッケージの物体検出」<br>
-              <strong>39位</strong>/123人 <strong>銅メダル</strong><br>
-              2025/07/25 - 2025/08/26
-            </li>
-            <li>
-              Track AI 「人間とAI、どちらが書いたコードか判別せよ！」<br>
-              <strong>12位</strong>/101人
-              <a
-                href="https://job.tracks.run/share/ai-competition-202508/415d7156-7d97-43e2-b718-69aa0afcff4b"
-                target="_blank"
-                class="text-sm text-blue-500 hover:text-blue-700 underline mt-1 sm:mt-0"
-              >
-                結果ページを見る →
-              </a><br>
-              2025/08/01 - 2025/08/31
-            </li>
-          </ol>
+          <div class="section-header fade-in">
+            <div class="section-icon icon-green">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <div class="section-title">学会発表</div>
+              <div class="section-title-en">Presentations</div>
+            </div>
+          </div>
+
+          <div class="pub-list">
+
+            <!-- NLP2026 -->
+            <div class="pub-card nlp fade-in">
+              <span class="pub-number">#5</span>
+              <span class="pub-venue venue-nlp">言語処理学会 NLP2026</span>
+              <div class="pub-title">農業経営データに対するMulti-table QAベンチマークの構築</div>
+              <div class="pub-authors">
+                ○<strong>板倉 亮真</strong>, 中嶋 楓花, 坂地 泰紀 (北大),
+                小林 暁雄, 馬場 研太, 大友 将宏, 石原 潤一, 桂樹 哲雄 (農研機構),
+                高柳 剛弘 (東大/Simulacra), 野田 五十樹 (北大)
+              </div>
+              <div class="pub-date">言語処理学会第32回年次大会 (NLP2026)</div>
+            </div>
+
+            <!-- SIG-FIN 2026 -->
+            <div class="pub-card sigfin fade-in">
+              <span class="pub-number">#4</span>
+              <span class="pub-venue venue-sigfin">人工知能学会 SIG-FIN</span>
+              <div class="pub-title">疑似コード駆動LLMベースエージェントを用いた人工市場モデル構築</div>
+              <div class="pub-authors">
+                <strong>板倉 亮真</strong> (北海道大学),
+                平野 正徳, 今城 健太郎 (Preferred Networks),
+                坂地 泰紀, 野田 五十樹 (北海道大学)
+              </div>
+              <div class="pub-date">第36回 人工知能学会 金融情報学研究会（SIG-FIN） · 2026年3月21日–22日</div>
+            </div>
+
+            <!-- YANS2025 -->
+            <div class="pub-card yans fade-in">
+              <span class="pub-number">#3</span>
+              <span class="pub-venue venue-yans">言語処理若手 YANS2025</span>
+              <div class="pub-title">LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション</div>
+              <div class="pub-authors">
+                <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN),
+                坂地 泰紀 (北大), 野田 五十樹 (北大)
+              </div>
+              <div class="pub-date">第20回言語処理若手シンポジウム (YANS2025) · 2025</div>
+            </div>
+
+            <!-- JSAI2025 -->
+            <div class="pub-card jsai fade-in">
+              <span class="pub-number">#2</span>
+              <span class="pub-venue venue-jsai">人工知能学会 2025</span>
+              <div class="pub-title">地方農業に特化したQAデータセットの構築と検証</div>
+              <div class="pub-authors">
+                <strong>板倉 亮真</strong>, 鈴木 雅弘, 坂地 泰紀, 野田 五十樹,
+                小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
+              </div>
+              <div class="pub-date">2025年度 人工知能学会全国大会 · 2025</div>
+            </div>
+
+            <!-- NLP2025 -->
+            <div class="pub-card nlp fade-in">
+              <span class="pub-number">#1</span>
+              <span class="pub-venue venue-nlp">言語処理学会 NLP2025</span>
+              <div class="pub-title">生成AIのための農業データセット構築とモデル評価</div>
+              <div class="pub-authors">
+                <strong>板倉 亮真</strong>, 坂地 泰紀, 野田 五十樹,
+                小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
+              </div>
+              <div class="pub-date">言語処理学会第31回年次大会 (NLP2025) · 2025</div>
+            </div>
+
+          </div>
         </section>
 
-        <!-- 連絡先 -->
-        <section id="contact" class="animate-fadeIn">
-          <h2 class="text-2xl font-semibold mb-4 border-b pb-2 flex items-center gap-2">
-            <i data-lucide="mail" class="w-6 h-6 text-red-500"></i>
-            連絡先 / Contact
-          </h2>
-          <ul class="space-y-2 text-gray-700">
-            <li><strong>Email:</strong> itakura.ryoma[at]gmail.com</li>
-            <li><strong>GitHub:</strong> <a href="https://github.com/itakuraryoma" class="text-blue-600 hover:underline">itakuraryoma</a></li>
-          </ul>
+        <div class="divider" style="margin-top: 56px;"></div>
+
+        <!-- Competitions -->
+        <section id="competitions">
+          <div class="section-header fade-in">
+            <div class="section-icon icon-yellow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg>
+            </div>
+            <div>
+              <div class="section-title">コンペ成績</div>
+              <div class="section-title-en">Competition Results</div>
+            </div>
+          </div>
+
+          <div class="comp-list">
+
+            <div class="comp-card fade-in">
+              <div class="comp-rank">
+                <div class="comp-rank-num rank-gold">2位</div>
+                <div class="comp-rank-label">学生部門</div>
+              </div>
+              <div>
+                <div class="comp-info-title">#21 atmaCup in collaboration with Elith</div>
+                <div class="comp-info-detail">
+                  <span class="comp-badge badge-gold">学生 2位</span>全体 11位 / 386チーム
+                  <br>賞金 6万円獲得
+                </div>
+              </div>
+            </div>
+
+            <div class="comp-card fade-in">
+              <div class="comp-rank">
+                <div class="comp-rank-num rank-bronze">39位</div>
+                <div class="comp-rank-label">/ 123人</div>
+              </div>
+              <div>
+                <div class="comp-info-title">SIGNATE「Axell AI Contest 2025 飲料パッケージの物体検出」</div>
+                <div class="comp-info-detail">
+                  <span class="comp-badge badge-bronze">銅メダル</span>
+                  <span style="color: var(--text-muted); font-size: 11px;">2025/07/25 – 2025/08/26</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="comp-card fade-in">
+              <div class="comp-rank">
+                <div class="comp-rank-num" style="color: var(--accent-cyan);">12位</div>
+                <div class="comp-rank-label">/ 101人</div>
+              </div>
+              <div>
+                <div class="comp-info-title">Track AI「人間とAI、どちらが書いたコードか判別せよ！」</div>
+                <div class="comp-info-detail">
+                  <a href="https://job.tracks.run/share/ai-competition-202508/415d7156-7d97-43e2-b718-69aa0afcff4b" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-size: 12px;">
+                    結果ページを見る →
+                  </a>
+                  <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;">2025/08/01 – 2025/08/31</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </section>
+
+        <div class="divider" style="margin-top: 56px;"></div>
+
+        <!-- Contact -->
+        <section id="contact">
+          <div class="section-header fade-in">
+            <div class="section-icon icon-cyan">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="section-title">連絡先</div>
+              <div class="section-title-en">Contact</div>
+            </div>
+          </div>
+
+          <div class="contact-list">
+            <div class="contact-item fade-in" style="cursor: default;">
+              <div class="contact-icon icon-cyan">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value">itakura.ryoma [at] gmail.com</div>
+              </div>
+            </div>
+            <a href="https://github.com/itakuraryoma" target="_blank" class="contact-item fade-in">
+              <div class="contact-icon" style="background: rgba(255,255,255,0.06); color: var(--text-primary);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-value">itakuraryoma</div>
+              </div>
+            </a>
+          </div>
+        </section>
+
       </div>
 
-      <footer class="mt-10 text-center text-sm text-gray-500 p-4">
-        &copy; 2025 板倉 亮真. All rights reserved.
+      <footer>
+        &copy; 2026 板倉 亮真 · Ryoma ITAKURA
       </footer>
     </main>
   </div>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav">
+    <a href="#biography" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+      経歴
+    </a>
+    <a href="#research" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      研究
+    </a>
+    <a href="#publications" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      発表
+    </a>
+    <a href="#competitions" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/></svg>
+      コンペ
+    </a>
+    <a href="#contact" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      連絡先
+    </a>
+  </nav>
+
   <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
-    });
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Active nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navItems.forEach(item => item.classList.remove('active'));
+          const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => sectionObserver.observe(s));
   </script>
 </body>
 </html>
