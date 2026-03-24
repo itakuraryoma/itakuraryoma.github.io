@@ -11,21 +11,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-primary: #080c14;
-      --bg-secondary: #0d1421;
-      --bg-card: rgba(255, 255, 255, 0.04);
-      --bg-card-hover: rgba(255, 255, 255, 0.07);
-      --border: rgba(255, 255, 255, 0.08);
-      --border-accent: rgba(0, 212, 255, 0.3);
-      --text-primary: #f0f4f8;
-      --text-secondary: #8892a4;
-      --text-muted: #556172;
-      --accent-cyan: #00d4ff;
-      --accent-blue: #3b82f6;
-      --accent-purple: #a855f7;
-      --accent-green: #10d9a0;
-      --gradient-main: linear-gradient(135deg, #00d4ff, #3b82f6, #a855f7);
-      --gradient-subtle: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(168,85,247,0.1));
+      --bg-primary: #F9F4EC;
+      --bg-secondary: #F0E8D8;
+      --bg-card: rgba(0, 0, 0, 0.03);
+      --bg-card-hover: rgba(0, 0, 0, 0.055);
+      --border: rgba(0, 0, 0, 0.1);
+      --border-accent: rgba(192, 106, 46, 0.35);
+      --text-primary: #1A120A;
+      --text-secondary: #6B5540;
+      --text-muted: #A8907A;
+      --accent-cyan: #C06A2E;
+      --accent-blue: #3B60A0;
+      --accent-purple: #7B50B0;
+      --accent-green: #2E8A60;
+      --gradient-main: linear-gradient(135deg, #C06A2E, #A04E20, #7B50B0);
+      --gradient-subtle: linear-gradient(135deg, rgba(192,106,46,0.12), rgba(123,80,176,0.08));
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,8 +44,8 @@
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg-primary); }
-    ::-webkit-scrollbar-thumb { background: #2a3447; border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: #3d4f6b; }
+    ::-webkit-scrollbar-thumb { background: #C8B098; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #B89878; }
 
     /* Layout */
     .layout {
@@ -135,9 +135,9 @@
     }
 
     .nav-item.active {
-      background: rgba(0, 212, 255, 0.08);
+      background: rgba(192, 106, 46, 0.1);
       color: var(--accent-cyan);
-      border-color: rgba(0, 212, 255, 0.2);
+      border-color: rgba(192, 106, 46, 0.25);
     }
 
     .nav-item svg {
@@ -169,7 +169,7 @@
       right: -100px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(192,106,46,0.08) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -180,7 +180,7 @@
       left: 200px;
       width: 400px;
       height: 400px;
-      background: radial-gradient(circle, rgba(168,85,247,0.05) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(123,80,176,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -193,8 +193,8 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(0, 212, 255, 0.08);
-      border: 1px solid rgba(0, 212, 255, 0.2);
+      background: rgba(192, 106, 46, 0.08);
+      border: 1px solid rgba(192, 106, 46, 0.22);
       border-radius: 20px;
       padding: 4px 12px;
       font-size: 12px;
@@ -222,7 +222,7 @@
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 6px;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8);
+      background: linear-gradient(135deg, #1A120A 30%, #7A5A40);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -265,26 +265,26 @@
     }
 
     .tag-cyan {
-      background: rgba(0, 212, 255, 0.08);
-      border-color: rgba(0, 212, 255, 0.25);
+      background: rgba(192, 106, 46, 0.08);
+      border-color: rgba(192, 106, 46, 0.25);
       color: var(--accent-cyan);
     }
 
     .tag-purple {
-      background: rgba(168, 85, 247, 0.08);
-      border-color: rgba(168, 85, 247, 0.25);
+      background: rgba(123, 80, 176, 0.08);
+      border-color: rgba(123, 80, 176, 0.25);
       color: var(--accent-purple);
     }
 
     .tag-green {
-      background: rgba(16, 217, 160, 0.08);
-      border-color: rgba(16, 217, 160, 0.25);
+      background: rgba(46, 138, 96, 0.08);
+      border-color: rgba(46, 138, 96, 0.25);
       color: var(--accent-green);
     }
 
     .tag-blue {
-      background: rgba(59, 130, 246, 0.08);
-      border-color: rgba(59, 130, 246, 0.25);
+      background: rgba(59, 96, 160, 0.08);
+      border-color: rgba(59, 96, 160, 0.25);
       color: var(--accent-blue);
     }
 
@@ -319,12 +319,12 @@
       height: 18px;
     }
 
-    .icon-blue { background: rgba(59,130,246,0.15); color: #3b82f6; }
-    .icon-purple { background: rgba(168,85,247,0.15); color: #a855f7; }
-    .icon-green { background: rgba(16,217,160,0.15); color: #10d9a0; }
-    .icon-yellow { background: rgba(245,158,11,0.15); color: #f59e0b; }
-    .icon-red { background: rgba(239,68,68,0.15); color: #ef4444; }
-    .icon-cyan { background: rgba(0,212,255,0.15); color: #00d4ff; }
+    .icon-blue { background: rgba(59,96,160,0.12); color: #3B60A0; }
+    .icon-purple { background: rgba(123,80,176,0.12); color: #7B50B0; }
+    .icon-green { background: rgba(46,138,96,0.12); color: #2E8A60; }
+    .icon-yellow { background: rgba(190,130,20,0.12); color: #BE8214; }
+    .icon-red { background: rgba(200,60,60,0.12); color: #C83C3C; }
+    .icon-cyan { background: rgba(192,106,46,0.12); color: #C06A2E; }
 
     .section-title {
       font-size: 22px;
@@ -371,12 +371,12 @@
       border-radius: 50%;
       background: var(--accent-cyan);
       border: 2px solid var(--bg-primary);
-      box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+      box-shadow: 0 0 8px rgba(192, 106, 46, 0.35);
     }
 
     .timeline-item.org::before {
       background: var(--accent-purple);
-      box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+      box-shadow: 0 0 8px rgba(123, 80, 176, 0.35);
     }
 
     .timeline-period {
@@ -433,7 +433,7 @@
 
     .card:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(0,0,0,0.15);
       transform: translateY(-1px);
     }
 
@@ -442,6 +442,55 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+    }
+
+    .pub-more-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .pub-more-items.open {
+      max-height: 2000px;
+      opacity: 1;
+    }
+
+    .pub-toggle-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 4px;
+      padding: 10px;
+      background: none;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pub-toggle-btn:hover {
+      border-color: rgba(0,0,0,0.2);
+      color: var(--text-primary);
+      background: var(--bg-card);
+    }
+
+    .pub-toggle-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .pub-toggle-btn.open svg {
+      transform: rotate(180deg);
     }
 
     .pub-card {
@@ -471,7 +520,7 @@
 
     .pub-card:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(0,0,0,0.15);
     }
 
     .pub-venue {
@@ -486,10 +535,10 @@
       letter-spacing: 0.03em;
     }
 
-    .venue-nlp { background: rgba(0,212,255,0.12); color: var(--accent-cyan); }
-    .venue-sigfin { background: rgba(168,85,247,0.12); color: var(--accent-purple); }
-    .venue-yans { background: rgba(16,217,160,0.12); color: var(--accent-green); }
-    .venue-jsai { background: rgba(59,130,246,0.12); color: var(--accent-blue); }
+    .venue-nlp { background: rgba(192,106,46,0.1); color: var(--accent-cyan); }
+    .venue-sigfin { background: rgba(123,80,176,0.1); color: var(--accent-purple); }
+    .venue-yans { background: rgba(46,138,96,0.1); color: var(--accent-green); }
+    .venue-jsai { background: rgba(59,96,160,0.1); color: var(--accent-blue); }
 
     .pub-title {
       font-size: 14px;
@@ -536,7 +585,7 @@
 
     .comp-card:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(0,0,0,0.15);
     }
 
     .comp-rank {
@@ -556,9 +605,9 @@
       margin-top: 2px;
     }
 
-    .rank-gold { color: #f59e0b; }
-    .rank-silver { color: #94a3b8; }
-    .rank-bronze { color: #cd7c2f; }
+    .rank-gold { color: #B8880A; }
+    .rank-silver { color: #7A8A9A; }
+    .rank-bronze { color: #A06028; }
 
     .comp-info-title {
       font-size: 14px;
@@ -582,8 +631,71 @@
       margin-right: 6px;
     }
 
-    .badge-gold { background: rgba(245,158,11,0.15); color: #f59e0b; }
-    .badge-bronze { background: rgba(205,124,47,0.15); color: #cd7c2f; }
+    .badge-gold { background: rgba(184,136,10,0.12); color: #B8880A; }
+    .badge-bronze { background: rgba(160,96,40,0.12); color: #A06028; }
+
+    /* Certifications */
+    .cert-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .cert-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(123, 80, 176, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .cert-preview {
+      width: 100%;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .cert-preview img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .cert-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      gap: 8px;
+    }
+
+    .cert-body {
+      min-width: 0;
+    }
+
+    .cert-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .cert-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
 
     /* Contact */
     .contact-list {
@@ -608,7 +720,7 @@
 
     .contact-item:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(0,0,0,0.15);
       color: var(--text-primary);
     }
 
@@ -674,6 +786,7 @@
       .hero-name { font-size: 30px; }
       .content-wrap { padding: 0 24px; }
       .comp-card { flex-direction: column; gap: 12px; }
+      .cert-list { grid-template-columns: 1fr; }
       footer { padding: 24px; }
     }
 
@@ -684,7 +797,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(13, 20, 33, 0.95);
+      background: rgba(240, 232, 216, 0.95);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
       padding: 8px 0;
@@ -723,7 +836,7 @@
     }
 
     a.pub-card:hover {
-      border-color: rgba(255,255,255,0.18) !important;
+      border-color: rgba(0,0,0,0.15) !important;
       transform: translateY(-2px);
     }
 
@@ -777,7 +890,7 @@
 
     .research-card:hover {
       background: var(--bg-card-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(0,0,0,0.15);
     }
 
     .research-icon {
@@ -829,6 +942,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/><line x1="13" y1="19" x2="19" y2="13"/><line x1="16" y1="16" x2="20" y2="20"/><line x1="19" y1="21" x2="21" y2="19"/></svg>
         コンペ / Competitions
       </a>
+      <a href="#certifications" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.56 14.93L7 22l5-3 5 3-1.56-7.07"/></svg>
+        資格・認定 / Credentials
+      </a>
       <a href="#contact" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         連絡先 / Contact
@@ -873,27 +990,28 @@
           <div class="timeline fade-in">
             <!-- Elith -->
             <div class="timeline-item org">
-              <div class="timeline-period">2026 –</div>
+              <div class="timeline-period">2026.1 -</div>
               <div class="timeline-org">
                 <img src="logo_elith.avif" alt="Elith" onerror="this.style.display='none'">
                 株式会社 Elith
               </div>
               <ul class="timeline-detail">
-                <li>AI / ML エンジニア　インターン</li>
+                <li>AI / ML エンジニア インターン</li>
               </ul>
             </div>
 
             <!-- Hokkaido Univ -->
             <div class="timeline-item">
-              <div class="timeline-period">2022.4 –</div>
+              <div class="timeline-period">2022.4 -</div>
               <div class="timeline-org">
                 <img src="logo_hokudai.png" alt="北大" onerror="this.style.display='none'">
                 北海道大学 / Hokkaido University
               </div>
               <ul class="timeline-detail">
-                <li>2024.10 –　知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
-                <li>2023.4 –　工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
-                <li>2022.4 –　総合入試理系</li>
+                <li>2026.4 - 情報科学院 情報科学専攻 情報理工学コース / Graduate School of Information Science and Technology</li>
+                <li>2024.10 - 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
+                <li>2023.4 - 2026.3 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
+                <li>2022.4 - 2023.3 総合入試理系</li>
               </ul>
             </div>
 
@@ -928,12 +1046,12 @@
             <div class="research-card">
               <div class="research-icon">📈</div>
               <div class="research-label">人工市場シミュレーション</div>
-              <div class="research-desc">Artificial Market Simulation · LLM Agent</div>
+              <div class="research-desc">Artificial Market Simulation</div>
             </div>
             <div class="research-card">
               <div class="research-icon">🤖</div>
               <div class="research-label">大規模言語モデル</div>
-              <div class="research-desc">Large Language Models · Benchmarking</div>
+              <div class="research-desc">Large Language Models</div>
             </div>
           </div>
         </section>
@@ -953,10 +1071,26 @@
           </div>
 
           <div class="pub-list">
+            <!-- SIG-FIN 2026 -->
+            <a class="pub-card sigfin fade-in" href="https://www.jstage.jst.go.jp/article/jsaisigtwo/2026/FIN-036/2026_39/_article/-char/ja" target="_blank" rel="noopener">
+              <span class="pub-number">#6</span>
+              <span class="pub-venue venue-sigfin">人工知能学会 SIG-FIN</span>
+              <div class="pub-title">疑似コード駆動LLMベースエージェントを用いた人工市場モデル構築</div>
+              <div class="pub-authors">
+                <strong>板倉 亮真</strong> (北海道大学),
+                平野 正徳, 今城 健太郎 (Preferred Networks),
+                坂地 泰紀, 野田 五十樹 (北海道大学)
+              </div>
+              <div class="pub-date">第36回 人工知能学会 金融情報学研究会（SIG-FIN） · 2026年3月21日–22日</div>
+              <div class="pub-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                J-STAGE で開く
+              </div>
+            </a>
 
             <!-- NLP2026 Multi-table QA -->
             <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B2-8.pdf" target="_blank" rel="noopener">
-              <span class="pub-number">#6</span>
+              <span class="pub-number">#5</span>
               <span class="pub-venue venue-nlp">言語処理学会 NLP2026</span>
               <div class="pub-title">農業経営データに対するMulti-table QAベンチマークの構築</div>
               <div class="pub-authors">
@@ -973,7 +1107,7 @@
 
             <!-- NLP2026 DAGRI Subtask 2 -->
             <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B2-11.pdf" target="_blank" rel="noopener">
-              <span class="pub-number">#5</span>
+              <span class="pub-number">#4</span>
               <span class="pub-venue venue-nlp">言語処理学会 NLP2026</span>
               <div class="pub-title">DAGRI Subtask 2: Multi-Table Multi-Hop QAに基づく営農シミュレーションのためのタスク提案</div>
               <div class="pub-authors">
@@ -988,68 +1122,59 @@
               </div>
             </a>
 
-            <!-- SIG-FIN 2026 -->
-            <a class="pub-card sigfin fade-in" href="https://www.jstage.jst.go.jp/article/jsaisigtwo/2026/FIN-036/2026_39/_article/-char/ja" target="_blank" rel="noopener">
-              <span class="pub-number">#4</span>
-              <span class="pub-venue venue-sigfin">人工知能学会 SIG-FIN</span>
-              <div class="pub-title">疑似コード駆動LLMベースエージェントを用いた人工市場モデル構築</div>
-              <div class="pub-authors">
-                <strong>板倉 亮真</strong> (北海道大学),
-                平野 正徳, 今城 健太郎 (Preferred Networks),
-                坂地 泰紀, 野田 五十樹 (北海道大学)
-              </div>
-              <div class="pub-date">第36回 人工知能学会 金融情報学研究会（SIG-FIN） · 2026年3月21日–22日</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                J-STAGE で開く
-              </div>
-            </a>
 
-            <!-- YANS2025 -->
-            <div class="pub-card yans fade-in">
-              <span class="pub-number">#3</span>
-              <span class="pub-venue venue-yans">言語処理若手 YANS2025</span>
-              <div class="pub-title">LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション</div>
-              <div class="pub-authors">
-                <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN),
-                坂地 泰紀 (北大), 野田 五十樹 (北大)
+            <div class="pub-more-items" id="pub-more">
+              <!-- YANS2025 -->
+              <div class="pub-card yans fade-in">
+                <span class="pub-number">#3</span>
+                <span class="pub-venue venue-yans">言語処理若手 YANS2025</span>
+                <div class="pub-title">LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション</div>
+                <div class="pub-authors">
+                  <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN),
+                  坂地 泰紀 (北大), 野田 五十樹 (北大)
+                </div>
+                <div class="pub-date">第20回言語処理若手シンポジウム (YANS2025) · 2025</div>
               </div>
-              <div class="pub-date">第20回言語処理若手シンポジウム (YANS2025) · 2025</div>
+
+              <!-- JSAI2025 -->
+              <a class="pub-card jsai fade-in" href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2025/0/JSAI2025_1Win477/_article/-char/ja/" target="_blank" rel="noopener">
+                <span class="pub-number">#2</span>
+                <span class="pub-venue venue-jsai">人工知能学会 2025</span>
+                <div class="pub-title">地方農業に特化したQAデータセットの構築と検証</div>
+                <div class="pub-authors">
+                  <strong>板倉 亮真</strong>, 鈴木 雅弘, 坂地 泰紀, 野田 五十樹,
+                  小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
+                </div>
+                <div class="pub-date">2025年度 人工知能学会全国大会 · 2025</div>
+                <div class="pub-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  J-STAGE で開く
+                </div>
+              </a>
+
+              <!-- NLP2025 -->
+              <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/P7-21.pdf" target="_blank" rel="noopener">
+                <span class="pub-number">#1</span>
+                <span class="pub-venue venue-nlp">言語処理学会 NLP2025</span>
+                <div class="pub-title">生成AIのための農業データセット構築とモデル評価</div>
+                <div class="pub-authors">
+                  <strong>板倉 亮真</strong>, 坂地 泰紀, 野田 五十樹,
+                  小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
+                </div>
+                <div class="pub-date">言語処理学会第31回年次大会 (NLP2025) · 2025</div>
+                <div class="pub-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  PDF を開く
+                </div>
+              </a>
             </div>
 
-            <!-- JSAI2025 -->
-            <a class="pub-card jsai fade-in" href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2025/0/JSAI2025_1Win477/_article/-char/ja/" target="_blank" rel="noopener">
-              <span class="pub-number">#2</span>
-              <span class="pub-venue venue-jsai">人工知能学会 2025</span>
-              <div class="pub-title">地方農業に特化したQAデータセットの構築と検証</div>
-              <div class="pub-authors">
-                <strong>板倉 亮真</strong>, 鈴木 雅弘, 坂地 泰紀, 野田 五十樹,
-                小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
-              </div>
-              <div class="pub-date">2025年度 人工知能学会全国大会 · 2025</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                J-STAGE で開く
-              </div>
-            </a>
-
-            <!-- NLP2025 -->
-            <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/P7-21.pdf" target="_blank" rel="noopener">
-              <span class="pub-number">#1</span>
-              <span class="pub-venue venue-nlp">言語処理学会 NLP2025</span>
-              <div class="pub-title">生成AIのための農業データセット構築とモデル評価</div>
-              <div class="pub-authors">
-                <strong>板倉 亮真</strong>, 坂地 泰紀, 野田 五十樹,
-                小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
-              </div>
-              <div class="pub-date">言語処理学会第31回年次大会 (NLP2025) · 2025</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                PDF を開く
-              </div>
-            </a>
-
           </div>
+
+          <button class="pub-toggle-btn" id="pub-toggle" onclick="togglePubs()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <span id="pub-toggle-text">過去の発表をもっと見る（3件）</span>
+          </button>
         </section>
 
         <div class="divider" style="margin-top: 56px;"></div>
@@ -1076,21 +1201,19 @@
               <div>
                 <div class="comp-info-title">#21 atmaCup in collaboration with Elith</div>
                 <div class="comp-info-detail">
-                  <span class="comp-badge badge-gold">学生 2位</span>全体 11位 / 386チーム
-                  <br>賞金 6万円獲得
+                  <span class="comp-badge badge-gold">賞金 6万円</span>
                 </div>
               </div>
             </div>
 
             <div class="comp-card fade-in">
               <div class="comp-rank">
-                <div class="comp-rank-num rank-bronze">39位</div>
-                <div class="comp-rank-label">/ 123人</div>
+                <div class="comp-rank-num rank-bronze">銅メダル</div>
+                <div class="comp-rank-label">39位 / 123人</div>
               </div>
               <div>
                 <div class="comp-info-title">SIGNATE「Axell AI Contest 2025 飲料パッケージの物体検出」</div>
                 <div class="comp-info-detail">
-                  <span class="comp-badge badge-bronze">銅メダル</span>
                   <span style="color: var(--text-muted); font-size: 11px;">2025/07/25 – 2025/08/26</span>
                 </div>
               </div>
@@ -1108,6 +1231,48 @@
                     結果ページを見る →
                   </a>
                   <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;">2025/08/01 – 2025/08/31</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="divider" style="margin-top: 56px;"></div>
+
+        <!-- Certifications -->
+        <section id="certifications">
+          <div class="section-header fade-in">
+            <div class="section-icon" style="background: rgba(123,80,176,0.1); color: var(--accent-purple);">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.56 14.93L7 22l5-3 5 3-1.56-7.07"/></svg>
+            </div>
+            <div>
+              <div class="section-title">資格・認定</div>
+              <div class="section-title-en">Certifications</div>
+            </div>
+          </div>
+
+          <div class="cert-list">
+            <div class="cert-card fade-in">
+              <div class="cert-preview">
+                <img src="matsuo_certificate/Certificate_applied.jpg" alt="LLM応用講座修了証">
+              </div>
+              <div class="cert-info">
+                <div class="cert-body">
+                  <div class="cert-title">大規模言語モデル講座2025応用編 修了</div>
+                  <div class="cert-meta">松尾研究室 · 東京大学</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cert-card fade-in">
+              <div class="cert-preview">
+                <img src="matsuo_certificate/Certificate_basic.jpg" alt="LLM基礎講座修了証">
+              </div>
+              <div class="cert-info">
+                <div class="cert-body">
+                  <div class="cert-title">大規模言語モデル講座2025基礎編 修了</div>
+                  <div class="cert-meta">松尾研究室 · 東京大学</div>
                 </div>
               </div>
             </div>
@@ -1140,7 +1305,7 @@
               </div>
             </div>
             <a href="https://github.com/itakuraryoma" target="_blank" class="contact-item fade-in">
-              <div class="contact-icon" style="background: rgba(255,255,255,0.06); color: var(--text-primary);">
+              <div class="contact-icon" style="background: rgba(0,0,0,0.06); color: var(--text-primary);">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
               </div>
               <div>
@@ -1177,6 +1342,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14.5 17.5 3 6 3 3 6 3 17.5 14.5"/></svg>
       コンペ
     </a>
+    <a href="#certifications" class="mobile-nav-item">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.56 14.93L7 22l5-3 5 3-1.56-7.07"/></svg>
+      資格
+    </a>
     <a href="#contact" class="mobile-nav-item">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       連絡先
@@ -1184,6 +1353,15 @@
   </nav>
 
   <script>
+    // Publications toggle
+    function togglePubs() {
+      const more = document.getElementById('pub-more');
+      const btn = document.getElementById('pub-toggle');
+      const isOpen = more.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      document.getElementById('pub-toggle-text').textContent = isOpen ? '折り畳む' : '過去の発表をもっと見る（3件）';
+    }
+
     // Fade-in on scroll
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
