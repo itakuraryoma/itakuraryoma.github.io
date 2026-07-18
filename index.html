@@ -24,6 +24,7 @@
       --accent-blue: #3B60A0;
       --accent-purple: #7B50B0;
       --accent-green: #2E8A60;
+      --accent-red: #C83C3C;
       --gradient-main: linear-gradient(135deg, #C06A2E, #A04E20, #7B50B0);
       --gradient-subtle: linear-gradient(135deg, rgba(192,106,46,0.12), rgba(123,80,176,0.08));
     }
@@ -402,6 +403,15 @@
       opacity: 0.9;
     }
 
+    .timeline-org a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .timeline-org a:hover {
+      color: var(--accent-cyan);
+    }
+
     .timeline-detail {
       font-size: 13px;
       color: var(--text-secondary);
@@ -517,6 +527,7 @@
     .pub-card.sigfin::before { background: var(--accent-purple); }
     .pub-card.yans::before { background: var(--accent-green); }
     .pub-card.jsai::before { background: var(--accent-blue); }
+    .pub-card.cifer::before { background: var(--accent-red); }
 
     .pub-card:hover {
       background: var(--bg-card-hover);
@@ -539,6 +550,7 @@
     .venue-sigfin { background: rgba(123,80,176,0.1); color: var(--accent-purple); }
     .venue-yans { background: rgba(46,138,96,0.1); color: var(--accent-green); }
     .venue-jsai { background: rgba(59,96,160,0.1); color: var(--accent-blue); }
+    .venue-cifer { background: rgba(200,60,60,0.1); color: var(--accent-red); }
 
     .pub-title {
       font-size: 14px;
@@ -608,6 +620,7 @@
     .rank-gold { color: #B8880A; }
     .rank-silver { color: #7A8A9A; }
     .rank-bronze { color: #A06028; }
+    .rank-accent { color: var(--accent-cyan); }
 
     .comp-info-title {
       font-size: 14px;
@@ -622,17 +635,35 @@
       line-height: 1.6;
     }
 
+    .comp-info-detail > * + * {
+      margin-left: 8px;
+    }
+
     .comp-badge {
       display: inline-block;
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: 600;
-      margin-right: 6px;
     }
 
     .badge-gold { background: rgba(184,136,10,0.12); color: #B8880A; }
     .badge-bronze { background: rgba(160,96,40,0.12); color: #A06028; }
+
+    .comp-info-detail a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .comp-info-detail a:hover {
+      text-decoration: underline;
+    }
+
+    .comp-date {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
 
     /* Certifications */
     .cert-list {
@@ -737,6 +768,15 @@
       color: var(--text-primary);
     }
 
+    .data-error {
+      color: var(--text-secondary);
+      font-size: 13px;
+      padding: 16px 18px;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      background: var(--bg-card);
+    }
+
     /* Divider */
     .divider {
       height: 1px;
@@ -814,6 +854,10 @@
     }
 
     .mobile-nav-item:hover { color: var(--accent-cyan); }
+
+    .pub-toggle-btn[hidden] {
+      display: none;
+    }
 
     /* Clickable pub card */
     a.pub-card {
@@ -974,40 +1018,7 @@
             </div>
           </div>
 
-          <div class="timeline fade-in">
-            <!-- Elith -->
-            <div class="timeline-item org">
-              <div class="timeline-period">2026.1 -</div>
-              <div class="timeline-org">
-                <img src="logo_elith.avif" alt="Elith" onerror="this.style.display='none'">
-                株式会社 Elith
-              </div>
-              <ul class="timeline-detail">
-                <li>AI / ML エンジニア インターン</li>
-              </ul>
-            </div>
-
-            <!-- Hokkaido Univ -->
-            <div class="timeline-item">
-              <div class="timeline-period">2022.4 -</div>
-              <div class="timeline-org">
-                <img src="logo_hokudai.png" alt="北大" onerror="this.style.display='none'">
-                北海道大学 / Hokkaido University
-              </div>
-              <ul class="timeline-detail">
-                <li>2026.4 - 情報科学院 情報科学専攻 情報理工学コース / Graduate School of Information Science and Technology</li>
-                <li>2024.10 - 知能ソフトウェア研究室 / Intelligent Software Laboratory</li>
-                <li>2023.4 - 2026.3 工学部 情報エレクトロニクス学科 情報理工学コース / School of Engineering</li>
-                <li>2022.4 - 2023.3 総合入試理系</li>
-              </ul>
-            </div>
-
-            <!-- High school -->
-            <div class="timeline-item">
-              <div class="timeline-period">2018.4 – 2021.3</div>
-              <div class="timeline-org">神奈川県立湘南高等学校 / Shonan High School</div>
-            </div>
-          </div>
+          <div class="timeline fade-in" id="career-list" data-source="data/careers.csv"></div>
         </section>
 
         <div class="divider" style="margin-top: 8px;"></div>
@@ -1057,110 +1068,11 @@
             </div>
           </div>
 
-          <div class="pub-list">
-            <!-- SIG-FIN 2026 -->
-            <a class="pub-card sigfin fade-in" href="https://www.jstage.jst.go.jp/article/jsaisigtwo/2026/FIN-036/2026_39/_article/-char/ja" target="_blank" rel="noopener">
-              <span class="pub-number">#6</span>
-              <span class="pub-venue venue-sigfin">人工知能学会 SIG-FIN</span>
-              <div class="pub-title">疑似コード駆動LLMベースエージェントを用いた人工市場モデル構築</div>
-              <div class="pub-authors">
-                <strong>板倉 亮真</strong> (北海道大学),
-                平野 正徳, 今城 健太郎 (Preferred Networks),
-                坂地 泰紀, 野田 五十樹 (北海道大学)
-              </div>
-              <div class="pub-date">第36回 人工知能学会 金融情報学研究会（SIG-FIN） · 2026年3月21日–22日</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                J-STAGE で開く
-              </div>
-            </a>
+          <div class="pub-list" id="publication-list" data-source="data/publications.csv"></div>
 
-            <!-- NLP2026 Multi-table QA -->
-            <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B2-8.pdf" target="_blank" rel="noopener">
-              <span class="pub-number">#5</span>
-              <span class="pub-venue venue-nlp">言語処理学会 NLP2026</span>
-              <div class="pub-title">農業経営データに対するMulti-table QAベンチマークの構築</div>
-              <div class="pub-authors">
-                ○<strong>板倉 亮真</strong>, 中嶋 楓花, 坂地 泰紀 (北大),
-                小林 暁雄, 馬場 研太, 大友 将宏, 石原 潤一, 桂樹 哲雄 (農研機構),
-                高柳 剛弘 (東大/Simulacra), 野田 五十樹 (北大)
-              </div>
-              <div class="pub-date">言語処理学会第32回年次大会 (NLP2026)</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                PDF を開く
-              </div>
-            </a>
-
-            <!-- NLP2026 DAGRI Subtask 2 -->
-            <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2026/pdf_dir/B2-11.pdf" target="_blank" rel="noopener">
-              <span class="pub-number">#4</span>
-              <span class="pub-venue venue-nlp">言語処理学会 NLP2026</span>
-              <div class="pub-title">DAGRI Subtask 2: Multi-Table Multi-Hop QAに基づく営農シミュレーションのためのタスク提案</div>
-              <div class="pub-authors">
-                ○中嶋 楓花, <strong>板倉 亮真</strong>, 坂地 泰紀 (北大),
-                小林 暁雄, 馬場 研太, 大友 将宏, 石原 潤一, 桂樹 哲雄 (農研機構),
-                高柳 剛弘 (東大/Simulacra), 野田 五十樹 (北大), 木村 泰知 (小樽商大)
-              </div>
-              <div class="pub-date">言語処理学会第32回年次大会 (NLP2026)</div>
-              <div class="pub-link-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                PDF を開く
-              </div>
-            </a>
-
-
-            <div class="pub-more-items" id="pub-more">
-              <!-- YANS2025 -->
-              <div class="pub-card yans fade-in">
-                <span class="pub-number">#3</span>
-                <span class="pub-venue venue-yans">言語処理若手 YANS2025</span>
-                <div class="pub-title">LLMベースエージェントを用いた自然言語情報を扱う人工市場シミュレーション</div>
-                <div class="pub-authors">
-                  <strong>板倉 亮真</strong> (北大), 平野 正徳 (PFN), 今城 健太郎 (PFN),
-                  坂地 泰紀 (北大), 野田 五十樹 (北大)
-                </div>
-                <div class="pub-date">第20回言語処理若手シンポジウム (YANS2025) · 2025</div>
-              </div>
-
-              <!-- JSAI2025 -->
-              <a class="pub-card jsai fade-in" href="https://www.jstage.jst.go.jp/article/pjsai/JSAI2025/0/JSAI2025_1Win477/_article/-char/ja/" target="_blank" rel="noopener">
-                <span class="pub-number">#2</span>
-                <span class="pub-venue venue-jsai">人工知能学会 2025</span>
-                <div class="pub-title">地方農業に特化したQAデータセットの構築と検証</div>
-                <div class="pub-authors">
-                  <strong>板倉 亮真</strong>, 鈴木 雅弘, 坂地 泰紀, 野田 五十樹,
-                  小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
-                </div>
-                <div class="pub-date">2025年度 人工知能学会全国大会 · 2025</div>
-                <div class="pub-link-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  J-STAGE で開く
-                </div>
-              </a>
-
-              <!-- NLP2025 -->
-              <a class="pub-card nlp fade-in" href="https://www.anlp.jp/proceedings/annual_meeting/2025/pdf_dir/P7-21.pdf" target="_blank" rel="noopener">
-                <span class="pub-number">#1</span>
-                <span class="pub-venue venue-nlp">言語処理学会 NLP2025</span>
-                <div class="pub-title">生成AIのための農業データセット構築とモデル評価</div>
-                <div class="pub-authors">
-                  <strong>板倉 亮真</strong>, 坂地 泰紀, 野田 五十樹,
-                  小林 暁雄, 大友 将宏, 石原 潤一, 桂樹 哲雄
-                </div>
-                <div class="pub-date">言語処理学会第31回年次大会 (NLP2025) · 2025</div>
-                <div class="pub-link-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                  PDF を開く
-                </div>
-              </a>
-            </div>
-
-          </div>
-
-          <button class="pub-toggle-btn" id="pub-toggle" onclick="togglePubs()">
+          <button class="pub-toggle-btn" id="pub-toggle" onclick="togglePubs()" hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            <span id="pub-toggle-text">過去の発表をもっと見る（3件）</span>
+            <span id="pub-toggle-text">過去の発表をもっと見る</span>
           </button>
         </section>
 
@@ -1178,52 +1090,7 @@
             </div>
           </div>
 
-          <div class="comp-list">
-
-            <div class="comp-card fade-in">
-              <div class="comp-rank">
-                <div class="comp-rank-num rank-gold">2位</div>
-                <div class="comp-rank-label">学生部門</div>
-              </div>
-              <div>
-                <div class="comp-info-title">#21 atmaCup in collaboration with Elith</div>
-                <div class="comp-info-detail">
-                  <span class="comp-badge badge-gold">賞金 6万円</span>
-                  <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;">2025/11/29 – 2025/12/07</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="comp-card fade-in">
-              <div class="comp-rank">
-                <div class="comp-rank-num rank-bronze">銅メダル</div>
-                <div class="comp-rank-label">39位 / 123人</div>
-              </div>
-              <div>
-                <div class="comp-info-title">SIGNATE「Axell AI Contest 2025 飲料パッケージの物体検出」</div>
-                <div class="comp-info-detail">
-                  <span style="color: var(--text-muted); font-size: 11px;">2025/07/25 – 2025/08/26</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="comp-card fade-in">
-              <div class="comp-rank">
-                <div class="comp-rank-num" style="color: var(--accent-cyan);">12位</div>
-                <div class="comp-rank-label">/ 101人</div>
-              </div>
-              <div>
-                <div class="comp-info-title">Track AI「人間とAI、どちらが書いたコードか判別せよ！」</div>
-                <div class="comp-info-detail">
-                  <a href="https://job.tracks.run/share/ai-competition-202508/415d7156-7d97-43e2-b718-69aa0afcff4b" target="_blank" style="color: var(--accent-cyan); text-decoration: none; font-size: 12px;">
-                    結果ページを見る →
-                  </a>
-                  <span style="color: var(--text-muted); font-size: 11px; margin-left: 8px;">2025/08/01 – 2025/08/31</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <div class="comp-list" id="competition-list" data-source="data/competitions.csv"></div>
         </section>
 
         <div class="divider" style="margin-top: 56px;"></div>
@@ -1295,6 +1162,15 @@
                 <div class="contact-value">itakuraryoma</div>
               </div>
             </a>
+            <a href="https://atcoder.jp/users/ItakuraRyoma" target="_blank" rel="noopener" class="contact-item fade-in">
+              <div class="contact-icon" style="background: rgba(160,96,40,0.12); color: #A06028; font-weight: 700;">
+                A
+              </div>
+              <div>
+                <div class="contact-label">AtCoder</div>
+                <div class="contact-value">ItakuraRyoma（茶色）</div>
+              </div>
+            </a>
           </div>
         </section>
 
@@ -1335,13 +1211,233 @@
   </nav>
 
   <script>
-    // Publications toggle
+    const PUBLICATION_VISIBLE_COUNT = 3;
+    const SELF_NAMES = ['板倉 亮真', 'Ryoma Itakura'];
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [];
+      let field = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"') {
+          if (inQuotes && next === '"') {
+            field += '"';
+            i += 1;
+          } else {
+            inQuotes = !inQuotes;
+          }
+        } else if (char === ',' && !inQuotes) {
+          row.push(field);
+          field = '';
+        } else if ((char === '\n' || char === '\r') && !inQuotes) {
+          if (char === '\r' && next === '\n') i += 1;
+          row.push(field);
+          if (row.some(value => value.trim() !== '')) rows.push(row);
+          row = [];
+          field = '';
+        } else {
+          field += char;
+        }
+      }
+
+      row.push(field);
+      if (row.some(value => value.trim() !== '')) rows.push(row);
+
+      const headers = rows.shift().map(header => header.trim());
+      return rows.map(values => Object.fromEntries(
+        headers.map((header, index) => [header, (values[index] || '').trim()])
+      ));
+    }
+
+    async function loadCSV(path) {
+      const response = await fetch(path, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`Failed to load ${path}`);
+      return parseCSV(await response.text());
+    }
+
+    function escapeRegExp(value) {
+      return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function appendHighlightedText(container, text) {
+      const pattern = new RegExp(`(${SELF_NAMES.map(escapeRegExp).join('|')})`, 'g');
+      text.split(pattern).filter(Boolean).forEach(part => {
+        const node = document.createElement(SELF_NAMES.includes(part) ? 'strong' : 'span');
+        node.textContent = part;
+        container.appendChild(node);
+      });
+    }
+
+    function createExternalLinkLabel(label) {
+      const linkLabel = document.createElement('div');
+      linkLabel.className = 'pub-link-icon';
+      linkLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+      linkLabel.appendChild(document.createTextNode(label || '開く'));
+      return linkLabel;
+    }
+
+    function renderDataError(container, label) {
+      container.innerHTML = '';
+      const message = document.createElement('div');
+      message.className = 'data-error fade-in';
+      message.textContent = `${label}データを読み込めませんでした。HTTPサーバー経由で開くとCSVを読み込めます。`;
+      container.appendChild(message);
+      observeFadeIn(container);
+    }
+
+    function createCareerItem(item) {
+      const card = document.createElement('div');
+      card.className = `timeline-item ${item.variant || ''}`.trim();
+
+      const period = document.createElement('div');
+      period.className = 'timeline-period';
+      period.textContent = item.period;
+      card.appendChild(period);
+
+      const org = document.createElement('div');
+      org.className = 'timeline-org';
+      if (item.logo) {
+        const logo = document.createElement('img');
+        logo.src = item.logo;
+        logo.alt = item.organization;
+        logo.onerror = () => { logo.style.display = 'none'; };
+        org.appendChild(logo);
+      }
+      if (item.url) {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = item.organization;
+        org.appendChild(link);
+      } else {
+        org.appendChild(document.createTextNode(item.organization));
+      }
+      card.appendChild(org);
+
+      const details = item.details ? item.details.split('|').filter(Boolean) : [];
+      if (details.length > 0) {
+        const list = document.createElement('ul');
+        list.className = 'timeline-detail';
+        details.forEach(detail => {
+          const li = document.createElement('li');
+          li.textContent = detail;
+          list.appendChild(li);
+        });
+        card.appendChild(list);
+      }
+
+      return card;
+    }
+
+    function createPublicationCard(item, number) {
+      const card = document.createElement(item.url ? 'a' : 'div');
+      card.className = `pub-card ${item.venue_class || 'jsai'} fade-in`;
+      if (item.url) {
+        card.href = item.url;
+        card.target = '_blank';
+        card.rel = 'noopener';
+      }
+
+      const pubNumber = document.createElement('span');
+      pubNumber.className = 'pub-number';
+      pubNumber.textContent = `#${number}`;
+      card.appendChild(pubNumber);
+
+      const venue = document.createElement('span');
+      venue.className = `pub-venue venue-${item.venue_class || 'jsai'}`;
+      venue.textContent = item.venue;
+      card.appendChild(venue);
+
+      const title = document.createElement('div');
+      title.className = 'pub-title';
+      title.textContent = item.title;
+      card.appendChild(title);
+
+      const authors = document.createElement('div');
+      authors.className = 'pub-authors';
+      appendHighlightedText(authors, item.authors);
+      card.appendChild(authors);
+
+      const date = document.createElement('div');
+      date.className = 'pub-date';
+      date.textContent = item.date;
+      card.appendChild(date);
+
+      if (item.url) {
+        card.appendChild(createExternalLinkLabel(item.link_label));
+      }
+
+      return card;
+    }
+
+    function createCompetitionCard(item) {
+      const card = document.createElement('div');
+      card.className = 'comp-card fade-in';
+
+      const rank = document.createElement('div');
+      rank.className = 'comp-rank';
+      const rankNumber = document.createElement('div');
+      rankNumber.className = `comp-rank-num ${item.rank_class || ''}`.trim();
+      rankNumber.textContent = item.rank;
+      const rankLabel = document.createElement('div');
+      rankLabel.className = 'comp-rank-label';
+      rankLabel.textContent = item.rank_label;
+      rank.append(rankNumber, rankLabel);
+      card.appendChild(rank);
+
+      const body = document.createElement('div');
+      const title = document.createElement('div');
+      title.className = 'comp-info-title';
+      title.textContent = item.title;
+      body.appendChild(title);
+
+      const detail = document.createElement('div');
+      detail.className = 'comp-info-detail';
+      if (item.badge) {
+        const badge = document.createElement('span');
+        badge.className = `comp-badge ${item.badge_class || ''}`.trim();
+        badge.textContent = item.badge;
+        detail.appendChild(badge);
+      }
+      if (item.url) {
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.textContent = `${item.link_label || '結果ページを見る'} →`;
+        detail.appendChild(link);
+      }
+      if (item.date) {
+        const date = document.createElement('span');
+        date.className = 'comp-date';
+        date.textContent = item.date;
+        detail.appendChild(date);
+      }
+      body.appendChild(detail);
+      card.appendChild(body);
+
+      return card;
+    }
+
+    function updatePublicationToggle(isOpen) {
+      const count = document.querySelectorAll('#pub-more .pub-card').length;
+      const text = document.getElementById('pub-toggle-text');
+      text.textContent = isOpen ? '折り畳む' : `過去の発表をもっと見る（${count}件）`;
+    }
+
     function togglePubs() {
       const more = document.getElementById('pub-more');
       const btn = document.getElementById('pub-toggle');
+      if (!more || !btn) return;
       const isOpen = more.classList.toggle('open');
       btn.classList.toggle('open', isOpen);
-      document.getElementById('pub-toggle-text').textContent = isOpen ? '折り畳む' : '過去の発表をもっと見る（3件）';
+      updatePublicationToggle(isOpen);
     }
 
     // Fade-in on scroll
@@ -1353,7 +1449,72 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    function observeFadeIn(root = document) {
+      root.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }
+
+    async function renderCareers() {
+      const container = document.getElementById('career-list');
+      try {
+        const items = await loadCSV(container.dataset.source);
+        container.innerHTML = '';
+        items.forEach(item => container.appendChild(createCareerItem(item)));
+        observeFadeIn(container);
+      } catch (error) {
+        renderDataError(container, '経歴');
+      }
+    }
+
+    async function renderPublications() {
+      const container = document.getElementById('publication-list');
+      const toggle = document.getElementById('pub-toggle');
+      try {
+        const items = await loadCSV(container.dataset.source);
+        const more = document.createElement('div');
+        more.className = 'pub-more-items';
+        more.id = 'pub-more';
+
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+          const card = createPublicationCard(item, items.length - index);
+          if (index < PUBLICATION_VISIBLE_COUNT) {
+            container.appendChild(card);
+          } else {
+            more.appendChild(card);
+          }
+        });
+
+        if (more.children.length > 0) {
+          container.appendChild(more);
+          toggle.hidden = false;
+          toggle.classList.remove('open');
+          updatePublicationToggle(false);
+        } else {
+          toggle.hidden = true;
+        }
+        observeFadeIn(container);
+      } catch (error) {
+        renderDataError(container, '発表');
+        toggle.hidden = true;
+      }
+    }
+
+    async function renderCompetitions() {
+      const container = document.getElementById('competition-list');
+      try {
+        const items = await loadCSV(container.dataset.source);
+        container.innerHTML = '';
+        items.forEach(item => container.appendChild(createCompetitionCard(item)));
+        observeFadeIn(container);
+      } catch (error) {
+        renderDataError(container, 'コンペ');
+      }
+    }
+
+    observeFadeIn();
+    renderCareers();
+    renderPublications();
+    renderCompetitions();
 
     // Active nav highlight
     const sections = document.querySelectorAll('section[id]');
