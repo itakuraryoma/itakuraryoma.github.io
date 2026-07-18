@@ -175,19 +175,32 @@
       background: var(--surface);
     }
 
-    .introduction-section {
-      min-height: 460px;
+    .section.introduction-section {
+      display: block;
+    }
+
+    .introduction-section .section-heading {
+      padding: 44px clamp(32px, 5vw, 64px);
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .introduction-section .section-heading h1 span {
+      display: inline;
+      margin: 0 0 0 10px;
     }
 
     .introduction-body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 720px;
+      display: grid;
+      grid-template-columns: 220px minmax(0, 1fr);
+      gap: 56px;
+      max-width: none;
+      padding-top: 64px;
+      padding-bottom: 64px;
     }
 
     .introduction-name {
-      margin-bottom: 36px;
+      padding-top: 2px;
     }
 
     .name-ja {
@@ -202,6 +215,10 @@
       color: var(--muted);
       font-size: 13px;
       font-weight: 500;
+    }
+
+    .introduction-details {
+      max-width: 620px;
     }
 
     .introduction-affiliation {
@@ -313,7 +330,6 @@
       height: 22px;
       flex: 0 0 22px;
       object-fit: contain;
-      filter: grayscale(1);
     }
 
     .career-org a {
@@ -607,17 +623,17 @@
     }
 
     .contact-title {
-      font-size: 28px;
+      font-size: clamp(27px, 3vw, 38px);
       font-weight: 600;
-      line-height: 1.25;
-      letter-spacing: -0.035em;
+      line-height: 1.1;
+      letter-spacing: -0.045em;
     }
 
     .contact-title span {
       display: block;
-      margin-top: 6px;
+      margin-top: 9px;
       color: #777;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.08em;
     }
@@ -732,6 +748,11 @@
         padding: 60px 36px;
       }
 
+      .introduction-body {
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 36px;
+      }
+
       .career-item {
         grid-template-columns: 112px minmax(0, 1fr);
       }
@@ -777,6 +798,19 @@
 
       .section-body {
         padding: 40px 22px 56px;
+      }
+
+      .introduction-section .section-heading {
+        padding: 38px 22px 28px;
+      }
+
+      .introduction-body {
+        display: block;
+        padding: 40px 22px 48px;
+      }
+
+      .introduction-name {
+        margin-bottom: 34px;
       }
 
       .career-item {
@@ -895,17 +929,19 @@
           <p class="name-ja">板倉 亮真</p>
           <p class="name-en">Ryoma Itakura</p>
         </div>
-        <p class="introduction-affiliation">北海道大学大学院 情報科学院<br>知能ソフトウェア研究室</p>
-        <p class="introduction-summary">
-          大規模言語モデルとAIエージェントを中心に、自然言語処理・人工市場・農業データ活用の研究開発に取り組んでいます。
-        </p>
+        <div class="introduction-details">
+          <p class="introduction-affiliation">北海道大学大学院 情報科学院<br>知能ソフトウェア研究室</p>
+          <p class="introduction-summary">
+            大規模言語モデルとAIエージェントを中心に、自然言語処理・人工市場・農業データ活用の研究開発に取り組んでいます。
+          </p>
 
-        <dl class="profile-meta">
-          <div class="profile-meta-row">
-            <dt>Field</dt>
-            <dd>LLM / AI Agents / NLP</dd>
-          </div>
-        </dl>
+          <dl class="profile-meta">
+            <div class="profile-meta-row">
+              <dt>Field</dt>
+              <dd>LLM / AI Agents / NLP</dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </section>
 
