@@ -1,4 +1,4 @@
-rank,rank_label,rank_class,title,badge,badge_class,date,url,link_label
-"2位","学生部門","rank-gold","#21 atmaCup in collaboration with Elith","賞金 6万円","badge-gold","2025/11/29 - 2025/12/07","",""
-"銅メダル","39位 / 123人","rank-bronze","SIGNATE「Axell AI Contest 2025 飲料パッケージの物体検出」","","","2025/07/25 - 2025/08/26","",""
-"12位","/ 101人","rank-accent","Track AI「人間とAI、どちらが書いたコードか判別せよ！」","","","2025/08/01 - 2025/08/31","https://job.tracks.run/share/ai-competition-202508/415d7156-7d97-43e2-b718-69aa0afcff4b","結果ページを見る"
+title,result,note,date,url,link_label
+"#21 atmaCup in collaboration with Elith","学生部門 2位","賞金 6万円","2025/11/29 - 2025/12/07","",""
+"SIGNATE「Axell AI Contest 2025 飲料パッケージの物体検出」","銅メダル（39位 / 123人）","","2025/07/25 - 2025/08/26","",""
+"Track AI「人間とAI、どちらが書いたコードか判別せよ！」","12位 / 101人","","2025/08/01 - 2025/08/31","https://job.tracks.run/share/ai-competition-202508/415d7156-7d97-43e2-b718-69aa0afcff4b","結果ページを見る"
